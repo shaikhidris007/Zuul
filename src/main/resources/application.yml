@@ -1,0 +1,25 @@
+zuul:
+  prefix: /apigateway
+  routes:    resource:
+    PRODUCT-SERVICE:
+      path: /amit/**
+      service-id: PRODUCT-SERVICE
+    SHOPPINGCART-SERVICE:
+      path: /cart/**
+      service-id: SHOPPINGCART-SERVICE
+      
+      
+server:  port: 8093
+eureka:  client:    register-with-eureka: true
+    fetch-registry: true
+    service-url:      defaultZone: http://localhost:9090/eureka/
+    instance:
+    preferIpAddress: true
+    hostname: localhost
+spring:
+ application:
+  name: zuul-server
+  
+management:  endpoint:    routes:      enabled: true
+   
+    
